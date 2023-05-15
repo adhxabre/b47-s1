@@ -1,0 +1,8 @@
+div = untuk melakukan grouping element agar mempermudah kita untuk melakukan styling
+
+margin = jarak luar
+padding = jarak dalam
+
+margin/padding punya 4 value, yaitu atas, kanan, bawah, dan kiri
+
+margin: 10px, 20px, 30px, 40px
