@@ -9,13 +9,13 @@ margin: 10px, 20px, 30px, 40px
 
 <-- Github Versioning Control Rules -->
 <- Newly use Repository ->
-- git init
-- git add .
-- git commit -m "your messages"
-- git remote add remote_name https://remote.link
-- git push remote_name branch_name
+- git init // meng-inisiasi dari local git
+- git add . // menambahkan semua folder/file baru ke dalam local git
+- git commit -m "your messages" // untuk memberikan message terhadap folder/file yang kita tambah
+- git remote add remote_name https://remote.link // untuk menambahkan link repository github kedalam local git kita
+- git push remote_name branch_name // untuk meng-upload/mem-push code/folder/file yang sudah kita tambahkan ke dalam local git kita
 
 <- Editing Repository ->
-- git add .
-- git commit -m "your messages"
-- git push remote_name branch_name
+- git add . // menambahkan semua folder/file yang ter-update ke dalam local git
+- git commit -m "your messages" // untuk memberikan message terhadap folder/file yang kita modifikasi
+- git push remote_name branch_name untuk meng-upload/mem-push code/folder/file yang sudah kita modifikasi ke dalam local git kita
