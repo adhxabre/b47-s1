@@ -6,3 +6,16 @@ padding = jarak dalam
 margin/padding punya 4 value, yaitu atas, kanan, bawah, dan kiri
 
 margin: 10px, 20px, 30px, 40px
+
+<-- Github Versioning Control Rules -->
+<- Newly use Repository ->
+- git init
+- git add .
+- git commit -m "your messages"
+- git remote add remote_name https://remote.link
+- git push remote_name branch_name
+
+<- Editing Repository ->
+- git add .
+- git commit -m "your messages"
+- git push remote_name branch_name
