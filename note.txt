@@ -19,3 +19,7 @@ margin: 10px, 20px, 30px, 40px
 - git add . // menambahkan semua folder/file yang ter-update ke dalam local git
 - git commit -m "your messages" // untuk memberikan message terhadap folder/file yang kita modifikasi
 - git push remote_name branch_name untuk meng-upload/mem-push code/folder/file yang sudah kita modifikasi ke dalam local git kita
+
+Note Styling:
+
+Inline > ID > Class > Element
