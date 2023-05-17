@@ -2,9 +2,28 @@
   <head>
     <title>Contact Me</title>
     <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <nav>
+      <div class="nav-left">
+        <ul>
+          <li>
+            <img src="image/logo.png" alt="dumbways_logo" />
+          </li>
+          <li>
+            <a class="active" href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
     <form>
       <div>
         <label for="input-name">Name</label>
@@ -37,8 +56,9 @@
       </div>
 
       <div>
-        <button>Submit</button>
+        <button type="button" onclick="submitData()">Submit</button>
       </div>
     </form>
+    <script src="contact.js"></script>
   </body>
 </html>
