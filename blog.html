@@ -12,10 +12,10 @@
             <img src="assets/images/logo.png" alt="dumbways_logo" />
           </li>
           <li>
-            <a class="active" href="index.html">Home</a>
+            <a href="index.html">Home</a>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a class="active" href="#">Blog</a>
           </li>
         </ul>
       </div>
@@ -27,7 +27,7 @@
     <div class="blog">
       <div class="blog-form">
         <div class="form-container">
-          <form>
+          <form onsubmit="addBlog(event)">
             <h1>Create Post Blog</h1>
             <div>
               <label for="input-blog-title">Title</label>
@@ -56,7 +56,7 @@
 
       <hr class="line" />
 
-      <div class="blog-list">
+      <div id="contents" class="blog-list">
         <div class="blog-list-item">
           <div class="blog-image">
             <img src="assets/images/blog-img.png" alt="blog_img" />

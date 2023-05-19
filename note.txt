@@ -23,3 +23,7 @@ margin: 10px, 20px, 30px, 40px
 Note Styling:
 
 Inline > ID > Class > Element
+
+array = menampung lebih dari satu data dalam satu penampung data yang sama
+object = menampung lebih dari satu object/property dalam satu penampung data yang sama
+array of object = menampung lebih dari satu data object dalam satu penampung data yang sama
