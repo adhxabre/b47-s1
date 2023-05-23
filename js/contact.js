@@ -133,16 +133,16 @@ function submitData() {
   console.log(emailer);
 }
 
-if (cowo === "ganteng") {
-  dapetCewe();
-} else if (cowo === "kaya") {
-  dapetCewe();
-} else {
-  cumaTemenan();
-}
+// if (cowo === "ganteng") {
+//   dapetCewe();
+// } else if (cowo === "kaya") {
+//   dapetCewe();
+// } else {
+//   cumaTemenan();
+// }
 
-if (jokowi === "3 periode") {
-  indonesiaMaju();
-} else {
-  indonesiaMundur();
-}
+// if (jokowi === "3 periode") {
+//   indonesiaMaju();
+// } else {
+//   indonesiaMundur();
+// }
