@@ -62,7 +62,6 @@
 // console.log(dataCaleg[1].nama);
 
 let dataBlog = [];
-
 function addBlog(event) {
   event.preventDefault();
 
@@ -78,7 +77,7 @@ function addBlog(event) {
     title,
     content,
     image,
-    postAt: "19 May 2023",
+    postAt: new Date(),
     author: "Abel Dustin",
   };
 
@@ -112,13 +111,98 @@ function renderBlog() {
                 >
             </h1>
             <div class="detail-blog-content">
-                ${dataBlog[index].postAt} | ${dataBlog[index].author}
+                ${getFullTime(dataBlog[index].postAt)} | ${
+      dataBlog[index].author
+    }
             </div>
-            <p>
-                ${dataBlog[index].content}
-            </p>
+              <p>
+                  ${dataBlog[index].content}
+              </p>
+              <div style="float: right; margin: 10px">
+                <p style="font-size: 15px; color: grey">${getDistanceTime(
+                  dataBlog[index].postAt
+                )}</p>
+              </div>
             </div>
+
         </div>
     `;
   }
 }
+
+function getFullTime(time) {
+  // console.log("get full time");
+  // let time = new Date();
+  // console.log(time);
+
+  let monthName = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  // console.log(monthName[8]);
+
+  let date = time.getDate();
+  // console.log(date);
+
+  let monthIndex = time.getMonth();
+  // console.log(monthIndex);
+
+  let year = time.getFullYear();
+  // console.log(year);
+
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  // console.log(minutes);
+
+  if (hours <= 9) {
+    hours = "0" + hours;
+  } else if (minutes <= 9) {
+    minutes = "0" + minutes;
+  }
+
+  return `${date} ${monthName[monthIndex]} ${year} ${hours}:${minutes} WIB`;
+}
+
+function getDistanceTime(time) {
+  let timeNow = new Date();
+  let timePost = time;
+
+  // waktu sekarang - waktu post
+  let distance = timeNow - timePost; // hasilnya milidetik
+  console.log(distance);
+
+  let milisecond = 1000; // milisecond
+  let secondInHours = 3600; // 1 jam 3600 detik
+  let hoursInDays = 24; // 1 hari 24 jam
+
+  let distanceDay = Math.floor(
+    distance / (milisecond * secondInHours * hoursInDays)
+  ); // 1/86400000
+  let distanceHours = Math.floor(distance / (milisecond * 60 * 60)); // 1/3600000
+  let distanceMinutes = Math.floor(distance / (milisecond * 60)); // 1/60000
+  let distanceSeconds = Math.floor(distance / milisecond); // 1/1000
+
+  if (distanceDay > 0) {
+    return `${distanceDay} Day Ago`;
+  } else if (distanceHours > 0) {
+    return `${distanceHours} Hours Ago`;
+  } else if (distanceMinutes > 0) {
+    return `${distanceMinutes} Minutes Ago`;
+  } else {
+    return `${distanceSeconds} Seconds Ago`;
+  }
+}
+
+setInterval(function () {
+  renderBlog();
+}, 10000);
