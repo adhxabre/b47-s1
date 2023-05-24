@@ -57,7 +57,7 @@ nav ul li .active {
 .container {
   display: flex;
   justify-content: center;
-  height: 90vh;
+  margin: 50px 0;
   align-items: center;
 }
 
@@ -83,4 +83,71 @@ section {
 .social-media i {
   margin-right: 20px;
   font-size: 30px;
+}
+
+#barsmenu {
+  display: none;
+}
+
+.hamburger-nav-container {
+  font-size: 23px;
+  list-style-type: none;
+  display: none;
+}
+
+.hamburger-nav-container a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #9a9a9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.hamburger-nav-container .hamburger-active {
+  text-decoration: none;
+  color: #fff;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  .card-container {
+    width: 100%;
+  }
+
+  .left {
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    margin-left: 0;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .skill {
+    flex-direction: column;
+  }
+
+  .item-collapse {
+    display: none;
+  }
+
+  #barsmenu {
+    display: block;
+  }
 }

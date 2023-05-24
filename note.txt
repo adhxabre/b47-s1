@@ -27,3 +27,6 @@ Inline > ID > Class > Element
 array = menampung lebih dari satu data dalam satu penampung data yang sama
 object = menampung lebih dari satu object/property dalam satu penampung data yang sama
 array of object = menampung lebih dari satu data object dalam satu penampung data yang sama
+
+vh / vw = sesuai dengan resolusi
+em / rem = sesuai dengan parent/root - 16px

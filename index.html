@@ -17,18 +17,33 @@
           <li>
             <img src="assets/images/logo.png" alt="dumbways_logo" />
           </li>
-          <li>
+          <li class="item-collapse">
             <a class="active" href="index.html">Home</a>
           </li>
-          <li>
+          <li class="item-collapse">
             <a href="blog.html">Blog</a>
           </li>
         </ul>
       </div>
-      <div class="nav-right">
+      <div class="nav-right item-collapse">
         <a href="contact.html">Contact</a>
       </div>
+      <div class="nav-right" id="barsmenu">
+        <button
+          style="background-color: transparent; border: none; cursor: pointer"
+          onclick="openHamburger()"
+        >
+          <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
+      </div>
     </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+      <a href="index.html" class="hamburger-active">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
     <div class="container">
       <section>
         <div class="left">
@@ -40,6 +55,7 @@
               border-radius: 10px;
               box-shadow: 0 0 15px #cecece;
             "
+            class="card-container"
           >
             <img
               style="width: 100%; border-radius: 10px 10px 0 0"
@@ -120,5 +136,6 @@
         </div>
       </section>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>
