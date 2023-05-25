@@ -3,6 +3,13 @@
     <title>Blog Page</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/blog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <nav>
@@ -11,18 +18,36 @@
           <li>
             <img src="assets/images/logo.png" alt="dumbways_logo" />
           </li>
-          <li>
+          <li class="item-collapse">
             <a href="index.html">Home</a>
           </li>
-          <li>
-            <a class="active" href="#">Blog</a>
+          <li class="item-collapse">
+            <a class="active" href="blog.html">Blog</a>
+          </li>
+          <li class="item-collapse">
+            <a href="testimonials.html">Testimonials</a>
           </li>
         </ul>
       </div>
-      <div class="nav-right">
+      <div class="nav-right item-collapse">
         <a href="contact.html">Contact</a>
       </div>
+      <div class="nav-right" id="barsmenu">
+        <button
+          style="background-color: transparent; border: none; cursor: pointer"
+          onclick="openHamburger()"
+        >
+          <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
+      </div>
     </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+      <a href="index.html">Home</a>
+      <a href="blog.html" class="hamburger-active">Blog</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </div>
 
     <div class="blog">
       <div class="blog-form">
@@ -89,5 +114,6 @@
     </div>
 
     <script src="js/blog.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

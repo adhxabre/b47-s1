@@ -12,6 +12,7 @@ function openHamburger() {
   if (!hamburgerIsOpen) {
     console.log(hamburgerIsOpen);
     hamburgerNavContainer.style.display = "block";
+    hamburgerNavContainer.style.backgroundColor = "red";
     hamburgerIsOpen = true;
   } else {
     console.log(hamburgerIsOpen);

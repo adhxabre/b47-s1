@@ -192,3 +192,20 @@ textarea {
   line-height: 140%;
   text-align: justify;
 }
+
+@media only screen and (max-width: 900px) {
+  .blog .blog-list .blog-list-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog .blog-list .blog-list-item .blog-image {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .blog-form .form-container {
+    width: 90%;
+  }
+}
