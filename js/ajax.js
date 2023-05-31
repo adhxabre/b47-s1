@@ -2,6 +2,7 @@ const promise = new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.npoint.io/b6f7a301bb632a1698a8", true);
   //   console.log(xhr);
+
   xhr.onload = () => {
     if (xhr.status === 200) {
       // We parsing it so it is easier to read in console
@@ -19,7 +20,7 @@ const promise = new Promise((resolve, reject) => {
 
 async function getAllTestimonials() {
   const response = await promise;
-  //   console.log(response);
+  console.log(response);
 
   let testimonialHTML = "";
   response.forEach(function (item) {
