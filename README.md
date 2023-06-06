@@ -17,3 +17,27 @@ go get <package_name/package_link>
 ```bash
 go run main.go
 ```
+
+# How to declare using Go?
+
+## VAR
+
+example
+
+```go
+var x = 3
+```
+
+note: Var can be put inside a func or not
+
+## :=
+
+example
+
+```go
+func main() {
+    x := 3
+}
+```
+
+note: := cannot be outsite of a func, must be inside of a func

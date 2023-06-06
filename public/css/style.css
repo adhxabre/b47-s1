@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #ebeaea;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 25px;
+  font-size: 20px;
+}
+
+nav ul li a {
+  color: black;
+}
+
+nav ul li .active {
+  color: orangered;
+}
+
+.nav-left {
+  flex: 50%;
+  /* mengatur lebarnya */
+}
+
+.nav-right {
+  flex: 50%;
+  text-align: end;
+  margin-right: 25px;
+}
+
+.nav-right a {
+  background-color: orangered;
+  padding: 8px 20px;
+  color: white;
+  border-radius: 5px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  align-items: center;
+}
+
+section {
+  display: flex;
+  width: 80%;
+}
+
+.left {
+  flex: 30%;
+}
+
+.right {
+  flex: 70%;
+  margin-left: 50px;
+}
+
+.skill {
+  display: flex;
+  margin-top: 30px;
+}
+
+.social-media i {
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+#barsmenu {
+  display: none;
+}
+
+.hamburger-nav-container {
+  font-size: 23px;
+  list-style-type: none;
+  display: none;
+}
+
+.hamburger-nav-container a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #9a9a9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.hamburger-nav-container .hamburger-active {
+  text-decoration: none;
+  color: #fff;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  .card-container {
+    width: 100%;
+  }
+
+  .left {
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    margin-left: 0;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .skill {
+    flex-direction: column;
+  }
+
+  .item-collapse {
+    display: none;
+  }
+
+  #barsmenu {
+    display: block;
+  }
+}

@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <title>Personal Web</title>
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <ul>
+          <li>
+            <img src="public/images/logo.png" alt="dumbways_logo" />
+          </li>
+          <li class="item-collapse">
+            <a class="active" href="/">Home</a>
+          </li>
+          <li class="item-collapse">
+            <a href="blog">Blog</a>
+          </li>
+          <li class="item-collapse">
+            <a href="testimonials">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right item-collapse">
+        <a href="contact">Contact</a>
+      </div>
+      <div class="nav-right" id="barsmenu">
+        <button
+          style="background-color: transparent; border: none; cursor: pointer"
+          onclick="openHamburger()"
+        >
+          <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+      <a href="/" class="hamburger-active">Home</a>
+      <a href="blog">Blog</a>
+      <a href="testimonials">Testimonials</a>
+      <a href="contact">Contact</a>
+    </div>
+
+    <div class="container">
+      <section>
+        <div class="left">
+          <div
+            style="
+              width: 350px;
+              margin: 0 auto;
+              padding: 10px;
+              border-radius: 10px;
+              box-shadow: 0 0 15px #cecece;
+            "
+            class="card-container"
+          >
+            <img
+              style="width: 100%; border-radius: 10px 10px 0 0"
+              src="public/images/image.jpg"
+              alt="gambar wibu"
+            />
+            <h2>Abel Dustin</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+              impedit sed dignissimos doloribus
+            </p>
+
+            <table
+              style="
+                border: 1px solid grey;
+                width: 100%;
+                text-align: center;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+              "
+              cellpadding="5px"
+            >
+              <tr style="background-color: grey; color: white">
+                <th>Experience</th>
+                <th>Year</th>
+              </tr>
+              <tr>
+                <td>Backend Developer</td>
+                <td>2022</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="right">
+          <h2>What do I do?</h2>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          deserunt dolores, harum rerum laboriosam earum totam dolorem debitis
+          impedit ipsam inventore sint quisquam modi eaque quis, unde nemo magni
+          ipsum?
+          <div class="skill">
+            <div>
+              <img src="public/images/logo.png" alt="" />
+              <h2>Javascript</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae deserunt dolores, harum rerum laboriosam earum totam
+                dolorem debitis impedit ipsam inventore sint quisquam modi eaque
+                quis, unde nemo magni ipsum?
+              </p>
+            </div>
+            <div>
+              <img src="public/images/logo.png" alt="" />
+              <h2>Github</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae deserunt dolores, harum rerum laboriosam earum totam
+                dolorem debitis impedit ipsam inventore sint quisquam modi eaque
+                quis, unde nemo magni ipsum?
+              </p>
+            </div>
+            <div>
+              <img src="public/images/logo.png" alt="" />
+              <h2>Deployment</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae deserunt dolores, harum rerum laboriosam earum totam
+                dolorem debitis impedit ipsam inventore sint quisquam modi eaque
+                quis, unde nemo magni ipsum?
+              </p>
+            </div>
+          </div>
+          <div class="social-media">
+            <h2>Found Me on</h2>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="public/js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <title>Testimonials</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/testimonials.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <ul>
+          <li>
+            <img src="assets/images/logo.png" alt="dumbways_logo" />
+          </li>
+          <li class="item-collapse">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="item-collapse">
+            <a href="blog.html">Blog</a>
+          </li>
+          <li class="item-collapse">
+            <a class="active" href="testimonials.html">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right item-collapse">
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-right" id="barsmenu">
+        <button
+          style="background-color: transparent; border: none; cursor: pointer"
+          onclick="openHamburger()"
+        >
+          <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="testimonials.html" class="hamburger-active">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+      <h1>My Testimonials</h1>
+      <div class="container-rating">
+        <h2>Rating By Stars</h2>
+        <div class="rating">
+          <button class="rating-btn" onclick="getAllTestimonials()">All</button>
+          <button class="rating-btn" onclick="getFilteredTestimonials(1)">
+            1 <i class="fa-solid fa-star"></i>
+          </button>
+          <button class="rating-btn" onclick="getFilteredTestimonials(2)">
+            2 <i class="fa-solid fa-star"></i>
+          </button>
+          <button class="rating-btn" onclick="getFilteredTestimonials(3)">
+            3 <i class="fa-solid fa-star"></i>
+          </button>
+          <button class="rating-btn" onclick="getFilteredTestimonials(4)">
+            4 <i class="fa-solid fa-star"></i>
+          </button>
+          <button class="rating-btn" onclick="getFilteredTestimonials(5)">
+            5 <i class="fa-solid fa-star"></i>
+          </button>
+        </div>
+      </div>
+      <section class="testimonials" id="testimonials">
+        <!-- <div class="testimonial">
+          <img
+            src="assets/images/profile/profile.png"
+            alt=""
+            class="profile-testimonial"
+          />
+          <p class="quote">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+            lectus eu libero venenatis gravida eget vel odio.
+          </p>
+          <p class="author">- Abel Dustin</p>
+        </div>
+
+        <div class="testimonial">
+          <img
+            src="assets/images/profile/profile.png"
+            alt=""
+            class="profile-testimonial"
+          />
+          <p class="quote">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+            lectus eu libero venenatis gravida eget vel odio.
+          </p>
+          <p class="author">- Abel Dustin</p>
+        </div>
+
+        <div class="testimonial">
+          <img
+            src="assets/images/profile/profile.png"
+            alt=""
+            class="profile-testimonial"
+          />
+          <p class="quote">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+            lectus eu libero venenatis gravida eget vel odio.
+          </p>
+          <p class="author">- Abel Dustin</p>
+        </div> -->
+      </section>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="js/ajax.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Blog Page</title>
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="public/css/blog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <ul>
+          <li>
+            <img src="public/images/logo.png" alt="dumbways_logo" />
+          </li>
+          <li class="item-collapse">
+            <a href="/">Home</a>
+          </li>
+          <li class="item-collapse">
+            <a class="active" href="blog">Blog</a>
+          </li>
+          <li class="item-collapse">
+            <a href="testimonials">Testimonials</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right item-collapse">
+        <a href="contact">Contact</a>
+      </div>
+      <div class="nav-right" id="barsmenu">
+        <button
+          style="background-color: transparent; border: none; cursor: pointer"
+          onclick="openHamburger()"
+        >
+          <i class="fa-2x fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hamburger-nav-container" id="hamburger-nav-container">
+      <a href="/">Home</a>
+      <a href="blog" class="hamburger-active">Blog</a>
+      <a href="testimonials">Testimonials</a>
+      <a href="contact">Contact</a>
+    </div>
+
+    {{if .Login}}
+    <div style="margin-top: 50px; text-align: end; margin-right: 210px">
+      <a
+        style="
+          background-color: orangered;
+          padding: 10px 20px;
+          color: white;
+          text-decoration: none;
+        "
+        href="/form-blog"
+        >Add Blog</a
+      >
+    </div>
+    {{end}}
+
+    <div class="blog">
+      <div id="contents" class="blog-list">
+        <div class="blog-list-item">
+          <div class="blog-image">
+            <img src="public/images/blog-img.png" alt="blog_img" />
+          </div>
+          <div class="blog-content">
+            <div class="btn-group">
+              <button class="btn-edit">Edit Post</button>
+              <button class="btn-delete">Delete Post</button>
+            </div>
+            <h1>
+              <a href="blog-detail/1" target="_blank"
+                >Pasar Coding di Indonesia Dinilai Masih Menjanjikan</a
+              >
+            </h1>
+            <div class="detail-blog-content">
+              12 Jul 2021 22:30 WIB | Ichsan Emrald Alamsyah
+            </div>
+            <p>
+              Ketimpangan sumber daya manusia (SDM) di sektor digital masih
+              menjadi isu yang belum terpecahkan. Berdasarkan penelitian
+              ManpowerGroup, ketimpangan SDM global, termasuk Indonesia,
+              meningkat dua kali lipat dalam satu dekade terakhir. Lorem ipsum,
+              dolor sit amet consectetur adipisicing elit. Quam, molestiae
+              numquam! Deleniti maiores expedita eaque deserunt quaerat! Dicta,
+              eligendi debitis?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="public/js/blog.js"></script>
+    <script src="public/js/index.js"></script>
+  </body>
+</html>
