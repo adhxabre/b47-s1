@@ -49,7 +49,6 @@
       <a href="contact">Contact</a>
     </div>
 
-    {{if .Login}}
     <div style="margin-top: 50px; text-align: end; margin-right: 210px">
       <a
         style="
@@ -62,42 +61,49 @@
         >Add Blog</a
       >
     </div>
-    {{end}}
 
     <div class="blog">
       <div id="contents" class="blog-list">
+        {{range $index, $data := .Blogs}}
         <div class="blog-list-item">
           <div class="blog-image">
             <img src="public/images/blog-img.png" alt="blog_img" />
           </div>
           <div class="blog-content">
-            <div class="btn-group">
-              <button class="btn-edit">Edit Post</button>
-              <button class="btn-delete">Delete Post</button>
+            <div
+              class="btn-group"
+              style="display: flex; width: 100%; justify-content: flex-end"
+            >
+              <a class="btn-edit">Edit Post</a>
+              <form
+                action="/blog-delete/{{$index}}"
+                method="POST"
+                style="margin-left: 10px"
+              >
+                <input
+                  type="submit"
+                  class="btn-delete"
+                  value="Delete Post"
+                  style="cursor: pointer"
+                />
+              </form>
             </div>
             <h1>
-              <a href="blog-detail/1" target="_blank"
-                >Pasar Coding di Indonesia Dinilai Masih Menjanjikan</a
+              <a href="blog-detail/{{$index}}" target="_blank"
+                >{{$data.Title}}</a
               >
             </h1>
             <div class="detail-blog-content">
-              12 Jul 2021 22:30 WIB | Ichsan Emrald Alamsyah
+              {{$data.PostDate}} | {{$data.Author}} | Index: {{$index}}
             </div>
-            <p>
-              Ketimpangan sumber daya manusia (SDM) di sektor digital masih
-              menjadi isu yang belum terpecahkan. Berdasarkan penelitian
-              ManpowerGroup, ketimpangan SDM global, termasuk Indonesia,
-              meningkat dua kali lipat dalam satu dekade terakhir. Lorem ipsum,
-              dolor sit amet consectetur adipisicing elit. Quam, molestiae
-              numquam! Deleniti maiores expedita eaque deserunt quaerat! Dicta,
-              eligendi debitis?
-            </p>
+            <p>{{$data.Content}}</p>
           </div>
         </div>
+        {{end}}
       </div>
     </div>
 
-    <script src="public/js/blog.js"></script>
+    <!-- <script src="public/js/blog.js"></script> -->
     <script src="public/js/index.js"></script>
   </body>
 </html>

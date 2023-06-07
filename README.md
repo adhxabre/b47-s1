@@ -41,3 +41,46 @@ func main() {
 ```
 
 note: := cannot be outsite of a func, must be inside of a func
+
+# Struct Interface
+
+## Struct
+
+- Point dari struct adalah membangun/membuat beberapa object/properties, kurang lebihnya mirip dengan Class pada materi Javascript sebelumnya
+
+Contoh code dari struct:
+
+```go
+type Name struct {
+    FirstName string
+    LastName  string
+}
+```
+
+## Interface
+
+- Point dari interface adalah membangun/membuat beberapa method yang kurang lebihnya mirip seperti konsep enkapsulasi pada Javascript, yaitu membangun dari formatter atau returning
+
+Contoh code dari interface:
+
+```go
+type Person interface {
+    getFirstName() string
+}
+
+func () getFirstName() string {
+    return FirstName
+}
+```
+
+# Strconv
+
+## Apa itu strconv?
+
+strconv merupakan sebuah package yang membantu kita untuk mengkonversikan tipe data
+
+- Atoi : mengubah string menjadi int
+
+# Referensi
+
+[Slice Append Cheat Sheet](https://ueokande.github.io/go-slice-tricks/)
