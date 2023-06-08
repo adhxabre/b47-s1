@@ -15,12 +15,13 @@ import (
 // nama dari struct nya adalah Blog
 // yang membangun dari object/properties
 type Blog struct {
-	ID       int
-	Title    string
-	Content  string
-	Image    string
-	Author   string
-	PostDate time.Time
+	ID         int
+	Title      string
+	Content    string
+	Image      string
+	Author     string
+	PostDate   time.Time
+	FormatDate string
 }
 
 // data - data yang ditampung, yang kemudian data yang diisi harus sesuai dengan
@@ -104,6 +105,7 @@ func blog(c echo.Context) error {
 			return c.JSON(http.StatusInternalServerError, map[string]string{"Message": err.Error()})
 		}
 
+		each.FormatDate = each.PostDate.Format("2 January 2006")
 		each.Author = "Abel Dustin"
 
 		result = append(result, each)
