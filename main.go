@@ -24,20 +24,27 @@ type Blog struct {
 	FormatDate string
 }
 
+type Exp struct {
+	ID   int
+	Name string
+	Year int
+}
+
 // data - data yang ditampung, yang kemudian data yang diisi harus sesuai dengan
 // tipe data yang telah dibangun pada struct
-var dataBlog = []Blog{
-	{
-		Title:   "Halo Title",
-		Content: "Halo Content",
-		Author:  "Abel Dustin",
-	},
-	{
-		Title:   "Halo Title 2",
-		Content: "Halo Content 2",
-		Author:  "Bambang Pamungkas",
-	},
-}
+// var dataBlog = []Blog{
+// 	{
+// 		Title:   "Halo Title",
+// 		Content: "Halo Content",
+// 		Author:  "Abel Dustin",
+// 	},
+// 	{
+// 		Title:   "Halo Title 2",
+// 		Content: "Halo Content 2",
+// 		Author:  "Bambang Pamungkas",
+// 	},
+// }
+// Sayonara data dummy
 
 func main() {
 	connection.DatabaseConnect()
@@ -73,13 +80,31 @@ func helloWorld(c echo.Context) error {
 }
 
 func home(c echo.Context) error {
+	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, year FROM tb_exp")
+
+	var result []Exp
+	for data.Next() {
+		var each = Exp{}
+
+		err := data.Scan(&each.ID, &each.Name, &each.Year)
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+		}
+
+		result = append(result, each)
+	}
+
+	exps := map[string]interface{}{
+		"Exp": result,
+	}
+
 	var tmpl, err = template.ParseFiles("views/index.html")
 
 	if err != nil { // null
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	return tmpl.Execute(c.Response(), exps)
 }
 
 func contact(c echo.Context) error {
@@ -127,37 +152,25 @@ func blog(c echo.Context) error {
 func blogDetail(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
-	// data := map[string]interface{}{
-	// 	"Id":      id,
-	// 	"Title":   "Pasar Coding di Indonesia Dinilai Masih Menjanjikan",
-	// 	"Content": "REPUBLIKA.CO.ID, JAKARTA -- Ketimpangan sumber daya manusia (SDM) di sektor digital masih menjadi isu yang belum terpecahkan. Berdasarkan penelitian Manpower Group, ketimpangan SDM global, termasuk Indonesia, meningkat dua kali lipat dalam satu dekade terakhir. Khusus di sektor teknologi yang berkembang pesat, menurut Kemendikbudristek, Indonesia kekurangan sembilan juta pekerja teknologi hingga tahun 2030. Hal itu berarti Indonesia memerlukan sekitar 600 ribu SDM digital yang memasuki pasar setiap tahunnya.",
-	// }
-
 	var BlogDetail = Blog{}
 
-	// for melakukan perulangan
-	// i = penampung index dari range
-	// data = penampung data dari range
-	// range = jarakan data/banyaknya data
-	// dataBlog = sumber data yang ingin dilakukan perulangan
-	for i, data := range dataBlog {
-		if id == i {
-			BlogDetail = Blog{
-				Title:    data.Title,
-				Content:  data.Content,
-				PostDate: data.PostDate,
-				Author:   data.Author,
-			}
-		}
+	err := connection.Conn.QueryRow(context.Background(), "SELECT id, title, content, image, post_date FROM tb_blog WHERE id=$1", id).Scan(
+		&BlogDetail.ID, &BlogDetail.Title, &BlogDetail.Content, &BlogDetail.Image, &BlogDetail.PostDate)
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
+
+	BlogDetail.Author = "Abel Dustin"
+	BlogDetail.FormatDate = BlogDetail.PostDate.Format("2 January 2006")
 
 	data := map[string]interface{}{
 		"Blog": BlogDetail,
 	}
 
-	var tmpl, err = template.ParseFiles("views/blog-detail.html")
+	var tmpl, errTemplate = template.ParseFiles("views/blog-detail.html")
 
-	if err != nil {
+	if errTemplate != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
@@ -177,23 +190,13 @@ func formAddBlog(c echo.Context) error {
 func addBlog(c echo.Context) error {
 	title := c.FormValue("inputTitle")
 	content := c.FormValue("inputContent")
+	// author := "Abel Dustin"
 
-	println("Title : " + title)
-	println("Content : " + content)
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_blog (title, content, image, post_date) VALUES ($1, $2, $3, $4)", title, content, "blog-img.jpg", time.Now())
 
-	var newBlog = Blog{
-		Title:   title,
-		Content: content,
-		Author:  "Anonymous",
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
-
-	// append disini bertugas untuk menambahkan data newBlog kedalam slice dataBlog yang kurang lebihnya
-	// mirip dengan fungsi push() pada Javascript
-	// param 1 = dimana datanya ditampung
-	// param 2 = data apa yang akan ditampung
-	dataBlog = append(dataBlog, newBlog)
-
-	fmt.Println(dataBlog)
 
 	return c.Redirect(http.StatusMovedPermanently, "/blog")
 }
@@ -201,9 +204,13 @@ func addBlog(c echo.Context) error {
 func deleteBlog(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
-	fmt.Println("Index : ", id)
+	fmt.Println("ID: ", id)
 
-	dataBlog = append(dataBlog[:id], dataBlog[id+1:]...)
+	_, err := connection.Conn.Exec(context.Background(), "DELETE FROM tb_blog WHERE id=$1", id)
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
 
 	return c.Redirect(http.StatusMovedPermanently, "/blog")
 }

@@ -86,10 +86,12 @@
                 <th>Experience</th>
                 <th>Year</th>
               </tr>
+              {{range $index, $data := .Exp}}
               <tr>
-                <td>Backend Developer</td>
-                <td>2022</td>
+                <td>{{$data.Name}}</td>
+                <td>{{$data.Year}}</td>
               </tr>
+              {{end}}
             </table>
           </div>
         </div>

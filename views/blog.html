@@ -76,7 +76,7 @@
             >
               <a class="btn-edit">Edit Post</a>
               <form
-                action="/blog-delete/{{$index}}"
+                action="/blog-delete/{{$data.ID}}"
                 method="POST"
                 style="margin-left: 10px"
               >
@@ -89,12 +89,12 @@
               </form>
             </div>
             <h1>
-              <a href="blog-detail/{{$index}}" target="_blank"
+              <a href="blog-detail/{{$data.ID}}" target="_blank"
                 >{{$data.Title}}</a
               >
             </h1>
             <div class="detail-blog-content">
-              {{$data.FormatDate}} | {{$data.Author}} | Index: {{$index}}
+              {{$data.FormatDate}} | {{$data.Author}} | ID: {{$data.ID}}
             </div>
             <p>{{$data.Content}}</p>
           </div>
