@@ -43,11 +43,23 @@ nav ul li .active {
 
 .nav-right {
   flex: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   text-align: end;
   margin-right: 25px;
 }
 
-.nav-right a {
+.nav-right .btn-auth {
+  font-size: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-right .btn-contact {
   background-color: orangered;
   padding: 8px 20px;
   color: white;

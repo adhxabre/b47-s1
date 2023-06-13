@@ -106,3 +106,21 @@ url koneksi ke database akan berbentuk seperti ini
 # Referensi
 
 [Slice Append Cheat Sheet](https://ueokande.github.io/go-slice-tricks/)
+
+## Sessions
+
+```bash
+go get github.com/labstack/echo-contrib/session
+```
+
+## BCrypt
+
+```bash
+go get golang.org/x/crypto/bcrypt
+```
+
+If the other packages are deleted after installing BCrypt
+
+```bash
+go mod tidy
+```

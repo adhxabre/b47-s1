@@ -30,7 +30,23 @@
         </ul>
       </div>
       <div class="nav-right item-collapse">
-        <a href="contact">Contact</a>
+        {{if .DataSession.IsLogin}}
+        <a href="#" style="text-decoration: none; color: black"
+          >Hello, {{.DataSession.Name}}</a
+        >
+        <form id="myform" action="/logout" method="POST"></form>
+        <button
+          onclick="document.getElementById('myform').submit()"
+          class="btn-auth"
+        >
+          Logout
+        </button>
+        {{else}}
+        <a href="/form-register" class="btn-auth">Register</a>
+        <a href="/form-login" class="btn-auth">Login</a>
+        {{end}}
+
+        <a href="contact" class="btn-contact">Contact</a>
       </div>
       <div class="nav-right" id="barsmenu">
         <button
@@ -49,20 +65,22 @@
       <a href="contact">Contact</a>
     </div>
 
-    <div style="margin-top: 50px; text-align: end; margin-right: 210px">
-      <a
-        style="
-          background-color: orangered;
-          padding: 10px 20px;
-          color: white;
-          text-decoration: none;
-        "
-        href="/form-blog"
-        >Add Blog</a
-      >
-    </div>
-
     <div class="blog">
+      {{if .DataSession.IsLogin}}
+      <div style="margin-top: 50px; text-align: end; margin-right: 210px">
+        <a
+          style="
+            background-color: orangered;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+          "
+          href="/form-blog"
+          >Add Blog</a
+        >
+      </div>
+      {{end}}
+
       <div id="contents" class="blog-list">
         {{range $index, $data := .Blogs}}
         <div class="blog-list-item">
