@@ -88,6 +88,7 @@ func main() {
 	e.GET("/blog", blog)
 	e.GET("/blog-detail/:id", blogDetail)
 	e.GET("/form-blog", formAddBlog)
+	e.GET("/testimonials", testimonials)
 
 	// Register
 	e.GET("/form-register", formRegister)
@@ -127,10 +128,18 @@ func home(c echo.Context) error {
 
 	sess, _ := session.Get("session", c)
 
+	if sess.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = sess.Values["isLogin"].(bool)
+		userData.Name = sess.Values["name"].(string)
+	}
+
 	datas := map[string]interface{}{
 		"Exp":          result,
 		"FlashStatus":  sess.Values["status"],
 		"FlashMessage": sess.Values["message"],
+		"DataSession":  userData,
 	}
 
 	delete(sess.Values, "message")
@@ -262,6 +271,29 @@ func deleteBlog(c echo.Context) error {
 	}
 
 	return c.Redirect(http.StatusMovedPermanently, "/blog")
+}
+
+func testimonials(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+
+	if sess.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = sess.Values["isLogin"].(bool)
+		userData.Name = sess.Values["name"].(string)
+	}
+
+	var tmpl, err = template.ParseFiles("views/testimonials.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+	}
+
+	data := map[string]interface{}{
+		"DataSession": userData,
+	}
+
+	return tmpl.Execute(c.Response(), data)
 }
 
 func formRegister(c echo.Context) error {

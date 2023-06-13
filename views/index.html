@@ -35,7 +35,23 @@
         </ul>
       </div>
       <div class="nav-right item-collapse">
-        <a href="contact">Contact</a>
+        {{if .DataSession.IsLogin}}
+        <a href="#" style="text-decoration: none; color: black"
+          >Hello, {{.DataSession.Name}}</a
+        >
+        <form id="myform" action="/logout" method="POST"></form>
+        <button
+          onclick="document.getElementById('myform').submit()"
+          class="btn-auth"
+        >
+          Logout
+        </button>
+        {{else}}
+        <a href="/form-register" class="btn-auth">Register</a>
+        <a href="/form-login" class="btn-auth">Login</a>
+        {{end}}
+
+        <a href="contact" class="btn-contact">Contact</a>
       </div>
       <div class="nav-right" id="barsmenu">
         <button
@@ -76,7 +92,7 @@
     </div>
     {{end}} {{end}}
 
-    <div class="container">
+    <div class="container-fluid">
       <section>
         <div class="left">
           <div
