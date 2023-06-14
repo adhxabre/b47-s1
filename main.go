@@ -2,6 +2,7 @@ package main
 
 import (
 	"b47s1/connection"
+	"b47s1/middleware"
 	"context"
 	"fmt"
 	"log"
@@ -76,6 +77,7 @@ func main() {
 
 	// Serve a static files from "public" directory
 	e.Static("/public", "public")
+	e.Static("/uploads", "uploads")
 
 	// To use sessions using echo
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("session"))))
@@ -101,7 +103,7 @@ func main() {
 	e.POST("/logout", logout)
 
 	// POST
-	e.POST("/add-blog", addBlog)
+	e.POST("/add-blog", middleware.UploadFile(addBlog))
 	e.POST("/blog-delete/:id", deleteBlog)
 
 	e.Logger.Fatal(e.Start("localhost:5000"))
@@ -252,7 +254,9 @@ func addBlog(c echo.Context) error {
 
 	author := sess.Values["id"].(int)
 
-	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_blog (title, content, image, post_date, author_id) VALUES ($1, $2, $3, $4, $5)", title, content, "blog-img.jpg", time.Now(), author)
+	image := c.Get("dataFile").(string)
+
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_blog (title, content, image, post_date, author_id) VALUES ($1, $2, $3, $4, $5)", title, content, image, time.Now(), author)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
